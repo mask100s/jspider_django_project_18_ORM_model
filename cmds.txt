@@ -1,0 +1,32 @@
+
+Python 3.10.0 (tags/v3.10.0:b494f59, Oct  4 2021, 19:00:18) [MSC v.1929 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from app1.models import *
+>>> ftb=Topic(topic_name='Football')
+>>> ftb.save()
+>>> rb=Topic(topic_name='Rugby')     
+>>> rb.save()  
+>>> rb=Topic.object.create(topic_name='Rugby')
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: type object 'Topic' has no attribute 'object'
+>>> rb=Topic.objects.create(topic_name='Rugby')
+>>> rb.save()                                   
+>>> bb=Topic.object.create(topic_name='Basketball') 
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: type object 'Topic' has no attribute 'object'
+>>> bb=Topic.objects.create(topic_name='Basketball')
+>>> bb.save()                                       
+>>> bb=Webpage.objects.create(topic_name=bb,name='joden',url='http://127.0.0.1:8000/admin/app1/joden/')    
+>>> bb.save()
+>>> ck=Topic.objects.get_or_create(topic_name='cricket')[0] 
+>>> ck.save()
+>>> ck1=Webpage.objects.create(topic_name=ck,name='rohit',url='http://127.0.0.1:8000/admin/app1/rohit/') 
+>>> ck1[0].save()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+TypeError: 'Webpage' object is not subscriptable
+>>> ck1.save()    
+>>> 

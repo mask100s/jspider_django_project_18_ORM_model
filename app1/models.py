@@ -5,15 +5,18 @@ class Topic(models.Model):
   topic_name=models.CharField(max_length=100,primary_key=True)
 
   def __str__(self):
+    #only srting data can be returned
     return self.topic_name
 
 class Webpage(models.Model):
   topic_name=models.ForeignKey(Topic,on_delete=models.CASCADE)
   name=models.CharField(max_length=100)
   url=models.URLField()
+  email=models.EmailField(default='xyz@gmail.com')
 
   def __str__(self):
-    return self.name
+    #only srting data can be returned
+    return str(self.pk)
 
 class AccessRecord(models.Model):
   name=models.ForeignKey(Webpage,on_delete=models.CASCADE)
@@ -21,4 +24,5 @@ class AccessRecord(models.Model):
   auther=models.CharField(max_length=100)
 
   def __str__(self):
+    #only srting data can be returned
     return self.auther
